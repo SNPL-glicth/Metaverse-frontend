@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    @apply bg-white font-sans antialiased text-black;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .font-brand { font-family: 'Montserrat', 'Inter', 'system-ui', 'sans-serif'; }
+  .logo-invert { filter: invert(1); }
+  .card-hover {
+    @apply transform transition-all duration-300 hover:scale-105 hover:shadow-2xl;
+  }
+  
+  .btn-primary {
+    @apply bg-black text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-white hover:text-black hover:shadow-lg border-2 border-black focus:outline-none focus:ring-2 focus:ring-gray-400;
+  }
+  
+  .btn-secondary {
+    @apply border-2 border-black text-black px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-400;
+  }
+
+  .card-minimal {
+    @apply bg-white border border-gray-200 rounded-lg p-6 transition-all duration-300 hover:bg-black hover:text-white hover:shadow-lg;
+  }
+
+  .placeholder-3d {
+    @apply aspect-square bg-gray-100 rounded-lg flex items-center justify-center text-gray-400 transition-all duration-300;
+  }
+}
+
+/* Minimal animated underline for navbar links (Ferrari-like, black/white) */
+.nav-link {
+  position: relative;
+  display: inline-block;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 1px;
+  width: 0;
+  background: #000;
+  transition: width 300ms ease;
+}
+.nav-link:hover::after { width: 100%; }
+
+/* Helper for image tiles with subtle zoom and overlay */
+.tile {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem; /* rounded-xl */
+}
+.tile__media {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  transform: scale(1);
+  transition: transform 500ms ease;
+}
+.tile:hover .tile__media { transform: scale(1.05); }
+.tile__overlay {
+  position: absolute; inset: 0; background: rgba(0,0,0,0.45);
+  transition: background 300ms ease, opacity 300ms ease;
+}
+.tile:hover .tile__overlay { background: rgba(0,0,0,0.55); }
+.tile__content { position: relative; z-index: 1; }
+
+/* Line markers for list items (used in Technologies section) */
+.list-lines { list-style: none; padding-left: 0; margin: 0; }
+.list-lines li { position: relative; padding-left: 1.25rem; }
+.list-lines li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.9em;
+  width: 14px;
+  height: 1px;
+  background: currentColor; /* matches text color */
+  opacity: 0.9;
+}
