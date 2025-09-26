@@ -22,7 +22,7 @@ const Footer: React.FC = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
               <img
-                src="/imagen-removebg-preview.png"
+                src="/logofondonegro.png"
                 alt="Metaverso logo"
                 className="h-14 md:h-16 w-auto select-none object-contain"
                 loading="lazy"
